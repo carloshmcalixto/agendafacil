@@ -46,7 +46,22 @@ fica livre de novo). Use os filtros de data e status para encontrar agendamentos
 
 ![Agendamentos](telas/02-agendamentos.png)
 
-## 6.6 No celular
+## 6.6 Backup dos dados
+
+Menu **Backup**. A tela mostra quantos clientes, serviços e agendamentos existem.
+
+![Backup](telas/07-backup.png)
+
+- **Baixar backup**: salva um arquivo `agendafacil-backup-AAAA-MM-DD-HHMM.json` com todos os dados.
+  Guarde-o em local seguro (pen drive, Google Drive, e-mail).
+- **Restaurar backup**: escolha o arquivo `.json` e clique em **Restaurar**. O sistema pede confirmação,
+  porque os dados atuais são substituídos pelos do arquivo. Se o arquivo for inválido ou estiver
+  corrompido, nada é alterado e uma mensagem explica o problema.
+
+> Na hospedagem gratuita do Render, os dados são reiniciados a cada nova publicação. Faça um backup antes
+> de publicar uma nova versão e restaure depois.
+
+## 6.7 No celular
 
 ![Celular](telas/06-celular.png)
 

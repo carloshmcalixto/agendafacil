@@ -25,12 +25,13 @@ def create_app(config: dict = None) -> Flask:
         database.init_db(seed=app.config["SEED"])
 
     # Controllers (Blueprints)
-    from app.controllers import agendamentos, clientes, principal, servicos
+    from app.controllers import agendamentos, backup, clientes, principal, servicos
 
     app.register_blueprint(principal.bp)
     app.register_blueprint(clientes.bp)
     app.register_blueprint(servicos.bp)
     app.register_blueprint(agendamentos.bp)
+    app.register_blueprint(backup.bp)
 
     @app.template_filter("moeda")
     def moeda(valor):

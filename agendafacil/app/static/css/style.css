@@ -84,3 +84,11 @@ td small { color: var(--cinza); }
   td { border: 0; padding: .3rem .9rem; }
   td::before { content: attr(data-label); display: block; font-size: .75rem; color: var(--cinza); text-transform: uppercase; }
 }
+
+/* Backup */
+.painel-backup { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1rem; }
+.painel-backup .formulario { max-width: none; align-content: start; }
+.painel-backup h2 { margin: 0; font-size: 1.15rem; }
+.painel-backup p { margin: 0; }
+.painel-backup input[type="file"] { flex: 1 1 180px; min-width: 0; max-width: 100%; width: auto; }
+.painel-backup .formulario > * { min-width: 0; }

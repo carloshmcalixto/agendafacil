@@ -6,9 +6,9 @@
 
 | Item | Resultado |
 |---|---|
-| Testes executados | 45 |
-| Aprovados | 45 (100%) |
-| Regras de negócio cobertas | RN01 a RN09 |
+| Testes executados | 54 (45 da versão 1.0 + 9 do backup, versão 1.1) |
+| Aprovados | 54 (100%) |
+| Regras de negócio cobertas | RN01 a RN09 e RF09 (backup) |
 | Evidência | Saída do `pytest -v` em `01-plano-e-relatorio-de-testes.md` |
 
 ## B. Validação com usuários – resumo
@@ -27,7 +27,7 @@ Nenhum defeito foi relatado pelos 5 testadores.
 
 | # | Relatado por | Descrição | Classificação | Prioridade | Status |
 |---|---|---|---|---|---|
-| 1 | Gustavo Silva e Enzo Carlo | Falta de backup dos dados do sistema | Nova funcionalidade (não é defeito) | Média | Registrada como melhoria para a próxima versão |
+| 1 | Gustavo Silva e Enzo Carlo | Falta de backup dos dados do sistema | Nova funcionalidade (não é defeito) | Média | **Implementada na versão 1.1**: menu Backup com "Baixar backup" (arquivo JSON) e "Restaurar backup", com 9 testes automatizados |
 
 ### Sugestões não adotadas
 
@@ -38,4 +38,6 @@ Não houve outras sugestões além do backup.
 Os testes automatizados (45 de 45 aprovados) e a validação com 5 usuários não encontraram defeitos.
 As funcionalidades testadas (cadastro de clientes e serviços, agendamentos em vários dias e bloqueio de
 conflito de horário) funcionaram como esperado. A única sugestão recebida, o backup dos dados, apareceu
-em 2 dos 5 relatos e foi registrada como melhoria para a próxima versão.
+em 2 dos 5 relatos e foi implementada na versão 1.1: o menu **Backup** permite baixar todos os dados em um
+arquivo JSON e restaurá-los depois. A restauração valida o arquivo e roda em uma única transação, então um
+arquivo inválido não altera os dados atuais. Com isso, o sistema passou a ter 54 testes automatizados, todos aprovados.

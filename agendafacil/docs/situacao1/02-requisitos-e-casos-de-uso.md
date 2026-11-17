@@ -12,6 +12,7 @@
 | RF06 | Listar agendamentos com filtro por data e status | Alta |
 | RF07 | Concluir ou cancelar agendamento | Alta |
 | RF08 | Exibir painel do dia: total, em aberto, concluídos, faturado e previsto | Média |
+| RF09 | Fazer backup (download em JSON) e restaurar os dados a partir do arquivo – *incluído na versão 1.1 a partir da validação com usuários* | Média |
 
 ## 2.2 Requisitos não funcionais
 

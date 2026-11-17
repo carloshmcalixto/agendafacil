@@ -3,7 +3,7 @@
 Sistema web de agendamento para pequenos prestadores de serviço (barbearias, salões de beleza, estúdios).
 Projeto desenvolvido na disciplina **Projeto Integrador Transdisciplinar em Engenharia de Software II**.
 
-> **Aplicação online:** link do Render (será adicionado após a publicação)
+> **Aplicação online:** https://agendafacil-oqfm.onrender.com
 
 ## Funcionalidades
 
@@ -14,6 +14,7 @@ Projeto desenvolvido na disciplina **Projeto Integrador Transdisciplinar em Enge
   - bloqueio de conflito de horário, considerando a duração do serviço
   - status: Agendado → Concluído ou Cancelado (cancelar libera o horário)
 - **Painel do dia** com total de atendimentos, faturado e previsto
+- **Backup**: baixa todos os dados em um arquivo `.json` e restaura a partir dele (versão 1.1, sugestão dos testadores)
 - Layout responsivo (computador e celular), mensagens de erro amigáveis e páginas 404/500
 
 ## Tecnologias
@@ -46,7 +47,7 @@ serviços e clientes de exemplo.
 python -m pytest -v
 ```
 
-Resultado atual: **45 testes aprovados** (veja `docs/situacao3/01-plano-e-relatorio-de-testes.md`).
+Resultado atual: **54 testes aprovados** (veja `docs/situacao3/01-plano-e-relatorio-de-testes.md`).
 
 ## Estrutura do repositório
 

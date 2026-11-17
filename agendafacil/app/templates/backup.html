@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block titulo %}Backup{% endblock %}
+{% block conteudo %}
+<h1>Backup dos dados</h1>
+
+<section class="cards">
+  <div class="card"><span>Clientes</span><strong>{{ resumo.clientes }}</strong></div>
+  <div class="card"><span>Serviços</span><strong>{{ resumo.servicos }}</strong></div>
+  <div class="card"><span>Agendamentos</span><strong>{{ resumo.agendamentos }}</strong></div>
+</section>
+
+<div class="painel-backup">
+  <section class="formulario">
+    <h2>Fazer backup</h2>
+    <p class="dica">Baixa um arquivo <strong>.json</strong> com todos os clientes, serviços e agendamentos.
+      Guarde esse arquivo em um lugar seguro (pen drive, Google Drive, e-mail).</p>
+    <div class="acoes">
+      <a class="botao" href="{{ url_for('backup.baixar') }}" download>⬇ Baixar backup</a>
+    </div>
+  </section>
+
+  <section class="formulario">
+    <h2>Restaurar backup</h2>
+    <p class="dica">Recupera os dados a partir de um arquivo de backup.
+      <strong>Atenção:</strong> os dados atuais serão substituídos pelos do arquivo.</p>
+    <form method="post" action="{{ url_for('backup.restaurar') }}" enctype="multipart/form-data" class="acoes">
+      <input type="file" name="arquivo" accept=".json,application/json" required>
+      <button class="botao perigo"
+              data-confirmar="Os dados atuais serão substituídos pelos do backup. Deseja continuar?">Restaurar</button>
+    </form>
+  </section>
+</div>
+{% endblock %}
