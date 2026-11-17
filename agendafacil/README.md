@@ -5,6 +5,11 @@ Projeto desenvolvido na disciplina **Projeto Integrador Transdisciplinar em Enge
 
 > **Aplicação online:** https://agendafacil-oqfm.onrender.com
 
+## Vídeos
+
+- Vídeo 1 – sistema em funcionamento (Situação 2): https://youtu.be/IPr8n_TEfYc
+- Vídeo 2 – solução atualizada após os testes, com o backup (Situação 3): https://youtu.be/STshdnXW-dE
+
 ## Funcionalidades
 
 - Cadastro, edição, busca e exclusão de **clientes** (com validação de telefone e e-mail)
