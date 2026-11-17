@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block titulo %}Serviços{% endblock %}
+{% block conteudo %}
+<div class="cabecalho">
+  <h1>Serviços</h1>
+  <a class="botao" href="{{ url_for('servicos.novo') }}">+ Novo serviço</a>
+</div>
+{% if servicos %}
+<div class="tabela-wrap">
+<table>
+  <thead><tr><th>Serviço</th><th>Preço</th><th>Duração</th><th>Situação</th><th>Ações</th></tr></thead>
+  <tbody>
+  {% for s in servicos %}
+    <tr class="{{ '' if s.ativo else 'inativo' }}">
+      <td data-label="Serviço">{{ s.nome }}<br><small>{{ s.descricao or '' }}</small></td>
+      <td data-label="Preço">{{ s.preco|moeda }}</td>
+      <td data-label="Duração">{{ s.duracao_min }} min</td>
+      <td data-label="Situação">{{ 'Ativo' if s.ativo else 'Inativo' }}</td>
+      <td data-label="Ações" class="acoes">
+        <a class="botao pequeno secundario" href="{{ url_for('servicos.editar', id_servico=s.id_servico) }}">Editar</a>
+        <form method="post" action="{{ url_for('servicos.ativar', id_servico=s.id_servico) }}">
+          <button class="botao pequeno {{ 'perigo' if s.ativo }}">{{ 'Desativar' if s.ativo else 'Ativar' }}</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+<p class="vazio">Nenhum serviço cadastrado.</p>
+{% endif %}
+{% endblock %}

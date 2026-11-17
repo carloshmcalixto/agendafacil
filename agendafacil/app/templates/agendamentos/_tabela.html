@@ -1,0 +1,31 @@
+{% set lista = agenda if agenda is defined else agendamentos %}
+{% if lista %}
+<div class="tabela-wrap">
+<table>
+  <thead>
+    <tr><th>Data/hora</th><th>Cliente</th><th>Serviço</th><th>Valor</th><th>Status</th><th>Ações</th></tr>
+  </thead>
+  <tbody>
+  {% for a in lista %}
+    <tr>
+      <td data-label="Data/hora">{{ a.data_hora|data_br }}</td>
+      <td data-label="Cliente">{{ a.cliente }}<br><small>{{ a.telefone }}</small></td>
+      <td data-label="Serviço">{{ a.servico }} <small>({{ a.duracao_min }} min)</small></td>
+      <td data-label="Valor">{{ a.preco|moeda }}</td>
+      <td data-label="Status"><span class="status {{ a.status|lower }}">{{ a.status|capitalize }}</span></td>
+      <td data-label="Ações">
+        {% if a.status == 'AGENDADO' %}
+        <form method="post" action="{{ url_for('agendamentos.status', id_agendamento=a.id_agendamento) }}" class="acoes">
+          <button name="status" value="CONCLUIDO" class="botao pequeno">Concluir</button>
+          <button name="status" value="CANCELADO" class="botao pequeno perigo" data-confirmar="Cancelar este agendamento?">Cancelar</button>
+        </form>
+        {% else %}—{% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+<p class="vazio">Nenhum agendamento encontrado.</p>
+{% endif %}

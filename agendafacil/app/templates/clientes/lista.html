@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block titulo %}Clientes{% endblock %}
+{% block conteudo %}
+<div class="cabecalho">
+  <h1>Clientes</h1>
+  <a class="botao" href="{{ url_for('clientes.novo') }}">+ Novo cliente</a>
+</div>
+<form method="get" class="filtro">
+  <input type="search" name="q" value="{{ busca }}" placeholder="Buscar por nome ou telefone">
+  <button class="botao secundario">Buscar</button>
+</form>
+{% if clientes %}
+<div class="tabela-wrap">
+<table>
+  <thead><tr><th>Nome</th><th>Telefone</th><th>E-mail</th><th>Ações</th></tr></thead>
+  <tbody>
+  {% for c in clientes %}
+    <tr>
+      <td data-label="Nome">{{ c.nome }}</td>
+      <td data-label="Telefone">{{ c.telefone }}</td>
+      <td data-label="E-mail">{{ c.email or '—' }}</td>
+      <td data-label="Ações" class="acoes">
+        <a class="botao pequeno secundario" href="{{ url_for('clientes.editar', id_cliente=c.id_cliente) }}">Editar</a>
+        <form method="post" action="{{ url_for('clientes.excluir', id_cliente=c.id_cliente) }}">
+          <button class="botao pequeno perigo" data-confirmar="Excluir {{ c.nome }}?">Excluir</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+<p class="vazio">Nenhum cliente encontrado.</p>
+{% endif %}
+{% endblock %}

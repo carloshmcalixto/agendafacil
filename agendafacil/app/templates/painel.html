@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block titulo %}Painel{% endblock %}
+{% block conteudo %}
+<div class="cabecalho">
+  <h1>Painel do dia</h1>
+  <form method="get" class="filtro">
+    <input type="date" name="data" value="{{ dia }}" onchange="this.form.submit()">
+  </form>
+</div>
+
+<section class="cards">
+  <div class="card"><span>Agendamentos</span><strong>{{ resumo.total }}</strong></div>
+  <div class="card"><span>Em aberto</span><strong>{{ resumo.agendados }}</strong></div>
+  <div class="card"><span>Concluídos</span><strong>{{ resumo.concluidos }}</strong></div>
+  <div class="card destaque"><span>Faturado</span><strong>{{ resumo.faturamento|moeda }}</strong>
+    <small>Previsto: {{ resumo.previsto|moeda }}</small></div>
+</section>
+
+<div class="cabecalho">
+  <h2>Agenda</h2>
+  <a class="botao" href="{{ url_for('agendamentos.novo') }}">+ Novo agendamento</a>
+</div>
+{% include "agendamentos/_tabela.html" with context %}
+{% endblock %}

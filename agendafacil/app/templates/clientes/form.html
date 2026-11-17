@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block titulo %}{{ titulo }}{% endblock %}
+{% block conteudo %}
+<h1>{{ titulo }}</h1>
+<form method="post" class="formulario" novalidate data-validar>
+  <label>Nome *
+    <input type="text" name="nome" value="{{ c.nome or '' }}" required minlength="3" maxlength="100">
+  </label>
+  <label>Telefone *
+    <input type="tel" name="telefone" value="{{ c.telefone or '' }}" required placeholder="(11) 98888-7777" data-mascara="telefone">
+  </label>
+  <label>E-mail
+    <input type="email" name="email" value="{{ c.email or '' }}" maxlength="120">
+  </label>
+  <div class="acoes">
+    <button class="botao">Salvar</button>
+    <a class="botao secundario" href="{{ url_for('clientes.index') }}">Voltar</a>
+  </div>
+</form>
+{% endblock %}

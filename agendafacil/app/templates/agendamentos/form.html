@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block titulo %}Novo agendamento{% endblock %}
+{% block conteudo %}
+<h1>Novo agendamento</h1>
+{% if not clientes or not servicos %}
+  <p class="vazio">Cadastre ao menos um <a href="{{ url_for('clientes.novo') }}">cliente</a> e um
+  <a href="{{ url_for('servicos.novo') }}">serviço ativo</a> antes de agendar.</p>
+{% else %}
+<form method="post" class="formulario" novalidate data-validar>
+  <label>Cliente *
+    <select name="id_cliente" required>
+      <option value="">Selecione…</option>
+      {% for c in clientes %}
+        <option value="{{ c.id_cliente }}" {{ 'selected' if a.id_cliente|string == c.id_cliente|string }}>{{ c.nome }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>Serviço *
+    <select name="id_servico" id="servico" required>
+      <option value="">Selecione…</option>
+      {% for s in servicos %}
+        <option value="{{ s.id_servico }}" data-duracao="{{ s.duracao_min }}" data-preco="{{ s.preco }}"
+          {{ 'selected' if a.id_servico|string == s.id_servico|string }}>{{ s.nome }} — {{ s.preco|moeda }}</option>
+      {% endfor %}
+    </select>
+    <small id="infoServico" class="dica"></small>
+  </label>
+  <label>Data e hora *
+    <input type="datetime-local" name="data_hora" value="{{ a.data_hora }}" required step="900">
+    <small class="dica">Atendimento de segunda a sábado, das 08:00 às 18:00.</small>
+  </label>
+  <label>Observação
+    <textarea name="observacao" maxlength="255" rows="3">{{ a.observacao or '' }}</textarea>
+  </label>
+  <div class="acoes">
+    <button class="botao">Agendar</button>
+    <a class="botao secundario" href="{{ url_for('agendamentos.index') }}">Voltar</a>
+  </div>
+</form>
+{% endif %}
+{% endblock %}
